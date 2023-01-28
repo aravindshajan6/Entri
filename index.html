@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <script src="./script.js"></script>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
+
+    
+    <title>Form validation sample 1</title>
+
+    
+  </head>
+  <body>
+    <form class="m-5" onsubmit="return handlesubmit()">
+      <div class="alert alert-danger" id="message" style="display: none;">
+            <small>hello</small>
+      </div>
+      <div class="form-group">
+        <label for="exampleinputName">Full Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="Name"
+          aria-describedby="nameHelp"
+          placeholder="Enter Full Name"
+        />
+      </div>
+      <div class="form-group">
+        <label for="exampleInputEmail1">Email address</label>
+        <input
+          type="email"
+          class="form-control"
+          id="email"
+          aria-describedby="emailHelp"
+          placeholder="Enter email"
+        />
+        <small id="emailHelp" class="form-text text-muted"
+          >We'll never share your email with anyone else.</small
+        >
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Password</label>
+        <input
+          type="password"
+          class="form-control"
+          id="Password"
+          placeholder="Password"
+        />
+      </div>
+
+      <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+      crossorigin="anonymous"
+    ></script>
+
+      <script>
+
+        function handlesubmit() 
+        {
+        const name = document.getElementById("Name").value;
+        const message = document.getElementById("message").value;
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("Password").value;
+        document.getElementById("message").style.display = "none";
+        if (name.length == 0) 
+        {
+            document.getElementById("message").innerText = "Please enter your Full name !";
+            document.getElementById("message").style.display = "block";
+            return false;
+        }
+
+        if(password.length<8)
+        {
+            document.getElementById("message").innerText = "Password length must be greater than 8 !";
+            document.getElementById("message").style.display = "block";
+            return false;
+        }
+
+        if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email) == false)
+        {
+            document.getElementById("message").innerText = "Enter a valid email !";
+            document.getElementById("message").style.display = "block";
+            return false;
+        }
+
+      
+        alert("Success !");
+        return false;
+}
+
+
+      </script>
+      <!-- <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="exampleCheck1" />
+        <label class="form-check-label" for="exampleCheck1">Check me out</label>
+      </div> -->
+      <button type="submit" class="btn btn-primary" ">
+        Submit
+      </button>
+    </form>
+  </body>
+</html>
